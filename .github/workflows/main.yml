@@ -1,0 +1,26 @@
+name: Examen U3 Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Iniciar sesión en Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Construir imagen Docker
+        run: docker build -t fernando704/ex_u3_18590236:1.0.0 .
+
+      - name: Subir imagen a Docker Hub
+        run: docker push fernando704/ex_u3_18590236:1.0.0
