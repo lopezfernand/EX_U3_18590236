@@ -1,6 +1,6 @@
 services:
   web:
-    build: .
+    image: fernando704/ex_u3_18590236:1.0.0
     ports:
       - "5050:5000"
     environment:
